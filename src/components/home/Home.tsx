@@ -1,16 +1,16 @@
-import React from 'react'
-import { Pillow } from '../../models/pillow'
+import React, { useContext } from 'react'
+import { PillowContext } from '../../App'
 import { CardList } from '../list/CardList'
 import { Heading } from './Heading'
 
-interface HomeProps {
-    pillows: Pillow[];
+type HomeProps = {
 }
-export const Home = (props: HomeProps) => {
+export const Home = () => {
+    const { pillows } = useContext(PillowContext)
     return (
         <div>
-            <Heading pillow={props.pillows[0]} />
-            <CardList pillows={props.pillows} />
+            <Heading pillow={pillows[0]} />
+            <CardList pillows={pillows} />
         </div>
     )
 }
