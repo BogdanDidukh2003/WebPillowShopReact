@@ -9,7 +9,7 @@ export const Home = () => {
     const { pillows } = useContext(PillowContext)
     return (
         <div>
-            <Heading pillow={pillows[0]} />
+            <Heading pillow={pillows[0] || {}} />
             <CardList pillows={pillows} />
         </div>
     )

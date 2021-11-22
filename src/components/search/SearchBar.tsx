@@ -5,7 +5,7 @@ export const SearchBar = () => {
     const { setFilter } = useContext(PillowContext);
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        setFilter('searchBy', { value: event.target.value });
+        setFilter('searchBy', event.target.value);
     }
 
     return (
