@@ -5,11 +5,10 @@ import { Pillow } from '../../models/pillow';
 import { Button } from '../button/Button';
 
 type PillowDetailsProps = RouteComponentProps;
-export const FilmDetails = (props: PillowDetailsProps) => {
+export const PillowDetails = (props: PillowDetailsProps) => {
     const { pillows } = useContext(PillowContext);
     const { id } = useParams<{ id: string }>();
     const pillow: Pillow = pillows.find(x => x.id == parseInt(id))!;
-
     return (
         <div style={{
             display: "flex",
@@ -28,7 +27,9 @@ export const FilmDetails = (props: PillowDetailsProps) => {
                 }} />
                 <div>
                     <h1>{pillow.title}</h1>
-                    <p style={{ textAlign: "left" }}>{pillow.description}</p>
+                    <p style={{
+                        textAlign: "left"
+                    }}>{pillow.description}</p>
                 </div>
             </div>
             <div>
@@ -42,4 +43,4 @@ export const FilmDetails = (props: PillowDetailsProps) => {
     )
 }
 
-export default withRouter(FilmDetails);
+export default withRouter(PillowDetails);
