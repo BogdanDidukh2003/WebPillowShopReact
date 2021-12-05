@@ -4,6 +4,7 @@ import { Button } from '../button/Button';
 
 interface CatalogCardProps {
     pillow: Pillow;
+    onViewMoreClick: () => void;
 }
 export const CatalogCard = (props: CatalogCardProps) => {
     const { id, title, description, price, width, height, imgUrl } = props.pillow;
@@ -15,7 +16,7 @@ export const CatalogCard = (props: CatalogCardProps) => {
             <p>Price: ${price}</p>
             <p>Width: {width} cm</p>
             <p>Height: {height} cm</p>
-            <Button label="View more" />
+            <Button label="View more" onClick={props.onViewMoreClick} />
         </div>
     )
 }

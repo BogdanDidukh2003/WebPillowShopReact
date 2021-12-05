@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
+import { RouteComponentProps } from 'react-router-dom';
 import { PillowContext } from '../../App';
 import { CatalogCard } from './CatalogCard';
 import { CatalogHeader } from './CatalogHeader';
 
-type CatalogProps = {
-}
+type CatalogProps = RouteComponentProps;
 export const Catalog = (props: CatalogProps) => {
     const { pillows, filter } = useContext(PillowContext);
 
@@ -14,17 +14,10 @@ export const Catalog = (props: CatalogProps) => {
             <ul style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", listStyleType: "none" }}>
                 {pillows
                     .filter(x =>
-                        x.description.includes(filter['searchBy'].value.toLowerCase()))
-                    .sort((a, b) => {
-                        const isAsc = filter['orderBy'].direction == "asc";
-
-                        if (a[filter['orderBy'].property] >= b[filter['orderBy'].property])
-                            return isAsc ? 1 : -1;
-                        else
-                            return isAsc ? -1 : 1;
-                    }).map((pillow) => (
+                        x.description.toLowerCase().includes((filter['searchBy'] as string).toLowerCase()))
+                    .map((pillow) => (
                         <li key={pillow.id} style={{ margin: "1rem", padding: "1rem", borderRadius: "8px", border: "2px solid #BBBB" }}>
-                            <CatalogCard pillow={pillow} />
+                            <CatalogCard pillow={pillow} onViewMoreClick={() => props.history.push(`/catalog/${pillow.id}`)} />
                         </li>
                     ))}
             </ul>

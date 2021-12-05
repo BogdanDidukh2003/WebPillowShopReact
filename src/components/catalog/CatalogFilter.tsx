@@ -15,7 +15,7 @@ interface CatalogFilterProps {
 export const CatalogFilter = (props: CatalogFilterProps) => {
     const { filter, setFilter } = useContext(PillowContext);
 
-    const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => { setFilter('orderBy', { property: event.target.id, direction: event.target.value }); }
+    const onChangeHandler = (event: ChangeEvent<HTMLSelectElement>) => { setFilter('orderBy', `${event.target.id} ${event.target.value}`); }
     return (
         <div>
             <label htmlFor={props.name}> {props.name} </label>
