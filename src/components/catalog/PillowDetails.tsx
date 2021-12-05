@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { RouteComponentProps, useParams, withRouter } from 'react-router-dom';
 import { PillowContext } from '../../App';
 import { Pillow } from '../../models/pillow';
+import { add } from '../../store/cartSlice';
+import { useAppDispatch } from '../../store/hooks';
 import { Button } from '../button/Button';
 
 type PillowDetailsProps = RouteComponentProps;
@@ -9,6 +11,10 @@ export const PillowDetails = (props: PillowDetailsProps) => {
     const { pillows } = useContext(PillowContext);
     const { id } = useParams<{ id: string }>();
     const pillow: Pillow = pillows.find(x => x.id == parseInt(id))!;
+
+    const dispatch = useAppDispatch();
+    const handleAddToCart = () => dispatch(add(pillow))
+
     return (
         <div style={{
             display: "flex",
@@ -36,7 +42,7 @@ export const PillowDetails = (props: PillowDetailsProps) => {
                 <div><b>Price: ${pillow.price}</b></div>
                 <div>
                     <Button label='Go back' onClick={() => props.history.goBack()} />
-                    <Button label='Add to cart' />
+                    <Button label='Add to cart' onClick={handleAddToCart} />
                 </div>
             </div>
         </div>

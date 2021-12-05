@@ -13,6 +13,7 @@ import { Pillow } from "./models/pillow";
 import { getPillows } from "./components/api/Api";
 import { MyLoader } from "./components/loader/MyLoader";
 import PillowDetails from "./components/catalog/PillowDetails";
+import { Cart } from "./components/cart/Cart";
 
 export const PillowContext = React.createContext<AppContext>({} as AppContext);
 type Filter = { [key: string]: any };
@@ -73,6 +74,7 @@ function App() {
           <Switch>
             <Route path='/home' render={() => <Home />} />
             <Route exact path='/catalog' render={(props) => <Catalog {...props} />} />
+            <Route path="/cart" render={() => <Cart />} />
             <Route path="/catalog/:id" render={(props) => <PillowDetails {...props} />} />
           </Switch>
         </PillowContext.Provider>
