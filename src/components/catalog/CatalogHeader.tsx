@@ -1,5 +1,5 @@
 import React from 'react';
-import { nameof } from '../../helpers/nameof';
+import { nameof } from '../../icons/nameof';
 import { Pillow } from '../../models/pillow';
 import { Button } from '../button/Button';
 import { CatalogFilter } from './CatalogFilter';
